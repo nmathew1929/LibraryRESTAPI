@@ -11,14 +11,23 @@ insert into User (username, pwd, firstname, lastname, access) values ('ztschiers
 insert into User (username, pwd, firstname, lastname, access) values ('hmaccoveney9', 'XEk84ivA', 'Haslett', 'MacCoveney', 'PATRON');
 insert into User (username, pwd, firstname, lastname, access) values ('admin', 'admin', 'Navin', 'Mathew', 'ADMIN');
 
+insert into Author(firstname, lastname) values ('hajime', 'isayama');
+insert into Author(firstname, lastname) values ('kengo', 'hanazawa');
 
-/*
-insert into Author(firstname, lastname) values ('Hajime', 'Isayama');
-insert into Book_Author (author_id, book_id) values (1, 1);
-insert into Book (title, category) values ('Shingeki no kyojin',  'thriller');
+insert into Category(categoryname) values ('thriller');
+insert into Category(categoryname) values ('comedy');
+insert into Category(categoryname) values ('horror');
 
- insert into Category(categoryname) values ('Thriller');
- */
-/*
- insert into Book (title, category) values ('Shingeki no kyojin', 1);
-*/
+
+insert into Book(title, author_id, category_id) values ('shingeki no kyojin', 1, 1);
+insert into Book(title, author_id, category_id) values ('I am Hero', 2, 1);
+insert into Book(title, author_id, category_id) values ('AOT Highschool', 1, 2);
+
+
+Insert into Inventory(book_id) values (1);
+Insert into Inventory(book_id) values (1);
+Insert into Inventory(book_id) values (3);
+Insert into Inventory(book_id) values (3);
+Insert into Inventory(book_id) values (2);
+
+

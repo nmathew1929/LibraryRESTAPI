@@ -30,6 +30,7 @@ public class CategoryController {
         return categoryService.findCategoryById(id);
     }
 
+    /*
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Category createCategory(@RequestBody Category category) {
@@ -47,5 +48,5 @@ public class CategoryController {
     public @ResponseBody void deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
     }
-
+    */
 }
