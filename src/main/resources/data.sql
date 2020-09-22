@@ -11,11 +11,11 @@ insert into User (username, pwd, firstname, lastname, access) values ('ztschiers
 insert into User (username, pwd, firstname, lastname, access) values ('hmaccoveney9', 'XEk84ivA', 'Haslett', 'MacCoveney', 'PATRON');
 insert into User (username, pwd, firstname, lastname, access) values ('admin', 'admin', 'Navin', 'Mathew', 'ADMIN');
 
-insert into Book (title, category) values ('Shingeki no kyojin',  'thriller');
-insert into Author(firstname, lastname) values ('Hajime', 'Isayama');
-insert into Book_Author (author_id, book_id) values (1, 1);
 
 /*
+insert into Author(firstname, lastname) values ('Hajime', 'Isayama');
+insert into Book_Author (author_id, book_id) values (1, 1);
+insert into Book (title, category) values ('Shingeki no kyojin',  'thriller');
 
  insert into Category(categoryname) values ('Thriller');
  */

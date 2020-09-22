@@ -4,6 +4,7 @@ package com.example.navinmathew.LibraryRESTAPI.controllers;
 import com.example.navinmathew.LibraryRESTAPI.domain.User;
 import com.example.navinmathew.LibraryRESTAPI.services.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,19 +22,33 @@ public class UserController {
     }
 
     @GetMapping
-    List<User> getAllUser() {
+    List<User> getAllUsers() {
        return userService.findAllUsers();
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.findCustomerById(id);
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Object> getUserById(@PathVariable Long id) {
+        return userService.findUserById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User saveCustomer(@RequestBody User user) {
+    public User createUser(@RequestBody User user) {
         return userService.saveUser(user);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public User updateUser(@RequestBody User user) {
+       return userService.saveUser(user);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public @ResponseBody void deleteUser(@PathVariable Long id) {
+        //System.out.println("I am getting called " + id);
+        userService.deleteUser(id);
     }
 
 

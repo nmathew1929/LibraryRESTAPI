@@ -1,10 +1,9 @@
 package com.example.navinmathew.LibraryRESTAPI.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -12,23 +11,16 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long  Id;
+    private Long id;
 
     private String title;
 
-    @ManyToMany
-    @JoinTable(name = "book_author",
-                joinColumns = {@JoinColumn(name="book_id")},
-                inverseJoinColumns = {@JoinColumn(name="author_id")})
-    private List<Author> authors;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("books")
+    private Author author;
 
-    private String category;
-
-    //@OneToOne
-    //private Category category;
-
-
-
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("books")
+    private Category category;
 
 }

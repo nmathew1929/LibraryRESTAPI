@@ -1,11 +1,11 @@
 package com.example.navinmathew.LibraryRESTAPI.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -15,14 +15,15 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String firstname;
+    @Column(unique = true)
     private String lastname;
 
-    @ManyToMany(mappedBy = "authors")
+
+    @OneToMany(mappedBy = "author")
+    @JsonIgnoreProperties("author")
     private List<Book> books;
 
-    public void addBook(Book b) {
-        this.books.add(b);
-        b.getAuthors().add(this);
-    }
+
 }
