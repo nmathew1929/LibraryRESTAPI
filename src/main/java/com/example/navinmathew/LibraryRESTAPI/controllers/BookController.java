@@ -33,8 +33,8 @@ public class BookController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book createBook(@RequestBody Book book) {
-        return bookService.saveBook(book);
+    public void createBook(@RequestBody Book book) {
+        bookService.saveBook(book);
     }
 
 //    @PostMapping("{/id}")
@@ -45,8 +45,8 @@ public class BookController {
 
     @PutMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Book updateBook(@RequestBody Book book) {
-        return bookService.saveBook(book);
+    public void updateBook(@RequestBody Book book) {
+        bookService.saveBook(book);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

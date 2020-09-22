@@ -44,7 +44,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public Book saveBook(Book book) {
+    public void saveBook(Book book) {
         Optional<Author> authorOptional = authorRepository.findAuthorByFirstnameAndLastname(book.getAuthor().getFirstname(), book.getAuthor().getLastname());
         Boolean authorcheck = authorOptional.isPresent();
         Optional<Category> categoryOptional= categoryRepository.findCategoryByCategoryname(book.getCategory().getCategoryname());
@@ -57,7 +57,6 @@ public class BookServiceImpl implements BookService {
                     .setParameter(3, categoryOptional.get().getId())
                     .executeUpdate();
 
-            return book;
         }else if (authorcheck){
             System.out.println("I have to create a new category.");
             entityManager.createNativeQuery("INSERT INTO Category(categoryname) VALUES (?)")
@@ -69,7 +68,6 @@ public class BookServiceImpl implements BookService {
                     .setParameter(2, authorOptional.get().getId())
                     .setParameter(3, id)
                     .executeUpdate();
-            return book;
         }else if (categorycheck){
             System.out.println("I have to create a new author.");
             entityManager.createNativeQuery("INSERT INTO Author(firstname, lastname) VALUES (?, ?)")
@@ -82,12 +80,10 @@ public class BookServiceImpl implements BookService {
                     .setParameter(2, id)
                     .setParameter(3, categoryOptional.get().getId())
                     .executeUpdate();
-           return book;
-
 
         }
          else {
-            return bookRepository.save(book);
+            bookRepository.save(book);
         }
     }
 
